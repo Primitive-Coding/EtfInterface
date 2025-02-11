@@ -16,8 +16,9 @@ class ETF:
 
     def download_tickers(self, ticker):
         export_dir = "M:\\Finance\\etfs"
-        command = ["python", "holdings_downloader.py", "--symbol", ticker.upper()]
+        command = ["python", "holdings_download.py", "--symbol", ticker.upper()]
         result = subprocess.run(command, capture_output=True, text=True)
+        print(f"RESULT: {result.stdout.split('\n')}")
         # downloader = HoldingsDownloader(export_dir)
         # downloader.run_schwab_download()
 
@@ -26,5 +27,13 @@ if __name__ == "__main__":
 
     etf = ETF()
 
-    tickers = etf.download_tickers("SCHG")
+    tickers = etf.download_tickers("ARKK")
     print(f"Tickers: {tickers}")
+
+"""
+Instructions: 
+
+Download ETF lists with this command: python holdings_download.py --symbol XXXX
+
+
+"""
